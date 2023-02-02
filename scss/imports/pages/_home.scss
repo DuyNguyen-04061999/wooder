@@ -1,0 +1,726 @@
+// CSS HOMEPAGE
+@include keyframes(scrollDown) {
+  from {
+    transform: translateY(-5px);
+  }
+
+  to {
+    transform: translateY(20px);
+  }
+}
+
+@include keyframes(fadeStart) {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.banner {
+  height: 100vh;
+  width: 100vw;
+
+  @include xs {
+    @include size(100%, 550px);
+  }
+  @include xxs {
+    @include size(100%, 450px);
+  }
+  position: relative;
+  &__slides {
+    height: 100%;
+    width: 100%;
+    // overflow: hidden;
+    &-wrapper {
+      height: 100%;
+      width: 100%;
+      .slide {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .textbox {
+          @include absoluteCenter("XY", 100%);
+          @include flexColBothCenter;
+
+          .title {
+            @include xs {
+              @include text(pb, 7rem, 8rem, 1rem, $brown, uppercase);
+            }
+
+            @include xxs {
+              @include text(pb, 5rem, 7rem, 0.5rem, $brown, uppercase);
+            }
+          }
+
+          .btn {
+            height: 45px;
+            border: 1px solid $white-cl;
+            padding: 0 50px;
+            margin-top: 34px;
+            @include xxs {
+              padding: 0 15px;
+              height: 36px;
+              font-size: 1rem;
+              margin-top: 5px;
+            }
+
+            img {
+              margin-left: 18px;
+            }
+
+            &__learn {
+              color: $white-cl;
+
+              @include xxs {
+                @include text(pb, 1.2rem, 5.831rem, 0.32rem, $white-cl, uppercase);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .container-fluid {
+    @include absoluteCenter("X");
+    width: 100%;
+    @include flexBetweenCenter;
+    bottom: 0;
+    padding-bottom: 30px;
+    @include xxs {
+      padding-bottom: 10px;
+    }
+    .banner {
+      &__pagination {
+        @include flexVerCenter;
+
+        &-num {
+          min-width: 52px;
+          margin: 0 15px;
+          @include text(pb, 4.2rem, 4.868rem, 0, $brown, unset);
+
+          @include xs {
+            font-size: 3rem;
+          }
+        }
+
+        @include xxs {
+          .line {
+            display: none;
+          }
+        }
+      }
+
+      &__keyframe {
+        @include flexColBothCenter;
+        gap: 12px;
+        @include absoluteCenter("X");
+        bottom: 30px;
+        @include xs {
+          top: -45%;
+        }
+        &-arrow {
+          animation: scrollDown 1s infinite forwards alternate;
+        }
+
+        @include xxs {
+          &-mouse {
+            display: none;
+          }
+        }
+      }
+
+      &__control {
+        @include flexVerCenter;
+
+        &-btn {
+          height: 38px;
+          @include xxs {
+            height: 35px;
+          }
+          border: 1px solid #fff;
+          padding: 0 15px;
+          @include flexVerCenter;
+          @include transition(all 0.2s linear);
+          cursor: pointer;
+          user-select: none;
+
+          &:hover {
+            background-color: $brown;
+          }
+          &.--prev {
+            transform: rotate(180deg);
+          }
+
+          &.--next {
+            border-left-color: transparent;
+            margin-left: -1px;
+          }
+
+          * {
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.furniture {
+  padding: 95px 0 90px 0;
+
+  @include md {
+    padding: 80px 0 90px 0;
+  }
+
+  @include sm {
+    padding: 80px 0 80px 0;
+  }
+
+  &__row {
+    width: 100%;
+    @include flexVerCenter;
+    flex: 1;
+    @include textBox(390px, 97px, 0, true, 75px, calc(100% + 20px), auto);
+    @include sm {
+      flex-direction: column-reverse;
+      @include textBox(100%, 0, 0, true, 75px, calc(100% + 20px), auto);
+    }
+
+    .text__box {
+      @include sm {
+        padding: 0;
+      }
+      &-heading {
+        margin-bottom: 5px;
+      }
+
+      .btn {
+        img {
+          margin-left: 10px;
+        }
+
+        @include xxs {
+          &__learn {
+            font-size: 1.6rem;
+          }
+        }
+      }
+
+      .line {
+        @include sm {
+          display: none;
+        }
+      }
+    }
+    &-img {
+      width: 52.8%;
+      height: 313px;
+      @include imgFit;
+      margin-left: 70px;
+
+      @include sm {
+        margin: 0 0 40px 0;
+        @include size(100%, 350px);
+
+        @include xxs {
+          @include size(100%, 250px);
+          margin-bottom: 20px;
+        }
+      }
+    }
+    &.--reverse {
+      margin-top: 105px;
+      @include sm {
+        margin-top: 60px;
+      }
+      @include textBox(385px, 0, 83px, true, 83px, auto);
+      flex-direction: row-reverse;
+      @include sm {
+        flex-direction: column-reverse;
+        @include textBox(100%, 0, 0, true, 75px, calc(100% + 20px), auto);
+      }
+      .text__box {
+        margin-right: 20px;
+        &-heading {
+          .heading {
+            text-align: right;
+          }
+        }
+        .paragraph {
+          text-align: right;
+        }
+
+        .btn {
+          &__learn {
+            margin-left: auto;
+          }
+        }
+      }
+
+      .furniture__row-img {
+        margin: 0 57px 0 0;
+        @include sm {
+          margin: 0 0 40px 0;
+          @include xxs {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.quality {
+  padding-bottom: 108px;
+  @include xxs {
+    padding-bottom: 80px;
+  }
+  .container {
+    @include textBox(480px, 0, 0, true);
+    // @include textBox();
+    .text__box {
+      margin: 0 auto;
+      &-heading {
+        .heading {
+          text-align: center;
+
+          @include xxs {
+            font-size: 2.8rem;
+          }
+          @include maxW(376px) {
+            font-size: 1.9rem;
+          }
+        }
+        .line {
+          top: calc(100% + 8px);
+          @include absoluteCenter("X", 38px, 4px);
+          background: $brown;
+        }
+      }
+
+      .paragraph {
+        text-align: center;
+        margin-top: 30px;
+        line-height: 20.86px;
+      }
+    }
+  }
+
+  &__videos {
+    @include flexEvenlyCenter;
+    @include sm {
+      @include flexColBothCenter;
+    }
+    margin-top: 60px;
+
+    @include xxs {
+      margin-top: 40px;
+    }
+    &-item {
+      @include sm {
+        + .quality__videos-item {
+          margin-top: 40px;
+        }
+      }
+      .thumnail {
+        width: 227px;
+        height: 227px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid #e5e5e5;
+        padding: 10px;
+        @include imgFit();
+        cursor: pointer;
+        img {
+          border-radius: inherit;
+        }
+        &:hover .thumnail-content::before {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        &:hover .thumnail-content img {
+          transform: scale(1.1);
+        }
+        &-content {
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+          overflow: hidden;
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background-color: rgba($color: #000000, $alpha: 0.4);
+            @include transition(all 0.2s linear);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
+          }
+          img {
+            @include transition(all 0.2s linear);
+          }
+        }
+        &-control {
+          z-index: 2;
+          @include absoluteCenter("XY");
+          width: 60px;
+          height: 60px;
+          border-radius: inherit;
+          background-color: rgba($color: $brown, $alpha: 0.8);
+          @include mid(true);
+          .play {
+            @include playBtn(10px, 15px);
+          }
+        }
+      }
+
+      p {
+        margin-top: 40px;
+        text-align: center;
+        @include text(pr, 1.6rem, 2rem, 0, #000, capitalize);
+
+        position: relative;
+        &::before {
+          content: "";
+          @include absoluteCenter("X", 22px, 2px);
+          background-color: $brown;
+          bottom: calc(100% + 12px);
+        }
+      }
+    }
+  }
+}
+
+.parallax {
+  height: calc(100vh - var(--height-header));
+
+  overflow: hidden;
+  @include md {
+    height: 75vh;
+  }
+  @include xs {
+    height: 70vh;
+  }
+  @include smX {
+    min-height: 500px;
+  }
+  // background: url("/img/complexity.jpg") center / cover no-repeat;
+  // background-attachment: fixed;
+  position: relative;
+  &__background {
+    @include absoluteCenter("XY", 100%);
+    @include imgFit();
+    img {
+      object-position: center;
+    }
+    .simpleParallax {
+      @include size(100%);
+    }
+    &::before {
+      content: "";
+      @include absoluteCenter("XY", 100%);
+      z-index: 1;
+      background: rgba($color: #000, $alpha: 0.5);
+    }
+  }
+  .container {
+    position: relative;
+    height: 100%;
+  }
+
+  &__content {
+    @include absoluteCenter("Y");
+
+    h3 {
+      @include text(pb, 4rem, 5rem, 0.04rem, $brown, uppercase);
+
+      max-width: 420px;
+
+      @include xs {
+        font-size: 3rem;
+        line-height: 4rem;
+        max-width: 330px;
+      }
+      @include maxW(376px) {
+        font-size: 2.5rem;
+        line-height: 3rem;
+        max-width: 278px;
+      }
+    }
+
+    &-text {
+      margin-top: 23px;
+      @include text(pr, 1.6rem, 2.2rem, 0.04rem, $white-cl, auto);
+      max-width: 551px;
+      @include xxs {
+        max-width: 426px;
+      }
+      @include maxW(426px) {
+        max-width: 360px;
+      }
+      @include maxW(376px) {
+        max-width: 320px;
+      }
+      @include maxW(321px) {
+        max-width: 260px;
+      }
+      .first {
+        max-width: 428px;
+      }
+      .second {
+        @include xxs {
+          display: none;
+        }
+      }
+    }
+
+    &-btn {
+      height: 45px;
+      padding: 0 55px;
+      border: 1px solid #fff;
+      width: max-content;
+      @include mid(true);
+      cursor: pointer;
+      margin-top: 50px;
+      .play {
+        @include mid(true);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        span {
+          @include playBtn(5px, 8px);
+        }
+      }
+      p {
+        @include text(pb, 1.2rem, 5.833rem, 0.32rem, $white-cl, uppercase);
+        text-transform: uppercase;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.about {
+  padding: 110px 0 90px 0;
+  @include sm {
+    padding-top: 90px;
+  }
+
+  @include xxs {
+    padding: 40px 0;
+  }
+  .container {
+    @include flexVerCenter;
+    @include sm {
+      @include flexColVerCenter;
+      align-items: initial;
+    }
+    @include textBox(360px, 0, 0, true, 80px, calc(100% + 20px), auto);
+    @include sm {
+      @include textBox(100%, 0, 0, true, 80px, calc(100% + 20px), auto);
+    }
+
+    .text__box {
+      @include flexColVerCenter;
+      &-heading {
+        .heading {
+          @include sm {
+            text-align: center;
+          }
+          @include xxs {
+            text-align: left;
+          }
+        }
+        .line {
+          background: $black-line;
+          right: calc(100% + 30px);
+          @include sm {
+            display: none;
+          }
+        }
+      }
+
+      .paragraph {
+        @include sm {
+          text-align: center;
+        }
+        @include xxs {
+          text-align: left;
+        }
+      }
+
+      .btn {
+        @include sm {
+          justify-content: center;
+        }
+        @include xxs {
+          justify-content: initial;
+        }
+      }
+    }
+  }
+
+  &__img {
+    margin-right: 70px;
+    @include size(52.8%, 334px);
+    @include imgFit;
+    img {
+      object-position: top;
+    }
+    @include sm {
+      margin: 0 0 30px 0;
+      @include size(100%, 450px);
+    }
+
+    @include xxs {
+      @include size(100%, 260px);
+    }
+
+    @include maxW(376px) {
+      @include size(100%, 230px);
+    }
+    @include maxW(321px) {
+      @include size(100%, 194px);
+    }
+  }
+}
+
+.gallery {
+  padding: 58px 0 94px 0;
+  @include maxW(375px) {
+    padding-bottom: 80px;
+  }
+  background-color: $black-gallery;
+  .container {
+    @include textBox(438px, 0, 0, false);
+    .text__box {
+      .heading,
+      .paragraph {
+        color: #fff;
+      }
+
+      .paragraph {
+        line-height: 22px;
+      }
+    }
+  }
+
+  &__libs {
+    perspective: 2px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 201px;
+    @include xxs {
+      grid-auto-rows: 150px;
+    }
+    @include xs {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    gap: 11px;
+    margin-top: 49px;
+
+    &-img {
+      cursor: zoom-in;
+      width: 100%;
+      height: 100%;
+      @include imgFit();
+      perspective: 100px;
+      transform-style: preserve-3d;
+      overflow: hidden;
+      @include transition(all 0.2s linear);
+      &:hover {
+        img {
+          transform: translateZ(-2px) scale(0.99);
+          filter: grayscale(0);
+          -webkit-filter: grayscale(0);
+          z-index: -1;
+        }
+      }
+      img {
+        filter: grayscale(100%);
+        -webkit-filter: grayscale(100%);
+        @include xs {
+          filter: grayscale(0);
+          -webkit-filter: grayscale(0);
+        }
+        @include transition(all 0.2s ease-in-out);
+      }
+      &:nth-child(3) {
+        grid-area: 1/2/3/3;
+      }
+    }
+  }
+}
+
+.news {
+  padding: 56px 0 83px 0;
+  .container {
+    @include textBox(438px, 0, 0, false);
+    .text__box {
+      .paragraph {
+        line-height: 22px;
+      }
+      @include xxs {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__content {
+    @include contentGrid(3);
+    gap: 25px;
+    margin-top: 45px;
+    @include sm {
+      @include contentGrid(2);
+    }
+    @include xxs {
+      @include contentGrid(1);
+    }
+  }
+}
+
+.slider {
+  user-select: none;
+  margin-bottom: 86px;
+  height: 356px;
+  @include transition(all 0.2s linear);
+  @include xxs {
+    height: 200px;
+  }
+  @include xs {
+    height: 250px;
+  }
+  &__carousel {
+    height: 100%;
+    img {
+      margin: 0 12px;
+      object-fit: cover;
+      @include size(auto, 100%);
+    }
+    --display: none;
+    .flickity-page-dots {
+      display: var(--display);
+    }
+    &.is-fullscreen {
+      z-index: 11;
+
+      --display: block;
+    }
+  }
+  // @include imgFit();
+}

@@ -1,0 +1,50 @@
+// css navigator (Menu)
+.header__menu {
+  z-index: 1;
+  @include flexVerCenter;
+  @include absoluteCenter("X", auto);
+  @include transition(all 0.2s linear);
+  li {
+    cursor: pointer;
+    &:hover a {
+      color: $brown;
+    }
+    & * {
+      pointer-events: none;
+    }
+    &.active a {
+      color: $brown;
+    }
+    a {
+      display: inline-block;
+      text-transform: uppercase;
+      padding: 0 36px;
+      @include text(
+        pb,
+        1.5rem,
+        var(--height-header),
+        0.04rem,
+        $white-cl,
+        uppercase
+      );
+      @include transition(all 0.2s linear);
+
+      @include md {
+        padding: 0 30px;
+      }
+    }
+  }
+
+  @include sm {
+    @include absoluteCenter("X", 100%, 0);
+    top: 100%;
+    flex-direction: column;
+    background-color: $black-heading;
+    overflow: hidden;
+
+    li {
+      @include size(100%, auto);
+      text-align: center;
+    }
+  }
+}

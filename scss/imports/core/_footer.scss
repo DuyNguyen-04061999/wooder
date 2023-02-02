@@ -1,0 +1,40 @@
+// css footer
+.footer {
+    background: #050505;
+    height: $footer-height;
+    // margin-top: 86px;
+    @include xs {
+        padding: 20px 0;
+        height: 140px;
+    }
+    .container {
+        height: 100%;
+        position: relative;
+        @include flexBetweenCenter();
+
+        @include xs {
+            @include flexColBothVerBetween;
+        }
+    }
+
+    &__copyright {
+        @include text(pr, 12px, 2.083rem, 0.8px, #b0b0b0, auto);
+    }
+    &__logo {
+        @include absoluteCenter("X");
+        height: 100%;
+        @include mid(true);
+
+        @include xs {
+            position: static;
+            transform: translateX(0);
+        }
+    }
+
+    &__btn {
+        @include text(pr, 12px, var(--footer-height), 0.8px, #b0b0b0, uppercase);
+        padding: 0 10px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,124 @@
+// css header
+.header {
+  position: fixed;
+  z-index: 10;
+  height: var(--height-header);
+  left: 0;
+  right: 0;
+  top: 0;
+  @include transition(all 0.4s ease);
+  .container-fluid {
+    @include flexBetweenCenter;
+    height: 100%;
+    position: relative;
+  }
+  &__logo {
+    @include xxs {
+      @include size(135px, unset);
+    }
+  }
+  &.active {
+    background-color: $black-head-foot;
+
+    .header__process {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__process {
+    position: absolute;
+    left: 0;
+    width: 0%;
+    background-color: $brown;
+    top: 100%;
+    height: 3px;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    visibility: hidden;
+    opacity: 0;
+    @include transition(all 0.2s linear);
+  }
+  &__lang {
+    @include flexVerCenter;
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    gap: 6px;
+
+    .text {
+      @include text(pb, 16px, auto, 0.8px, $white-cl, uppercase);
+    }
+    &-main {
+      @include flexVerCenter;
+      height: 100%;
+      position: relative;
+      span {
+        margin-right: 5px;
+      }
+
+      @include sm {
+        margin-right: 10px;
+      }
+      img {
+        @include transition(all 0.2s linear);
+      }
+      &.active {
+        .header__lang-sub {
+          @include visible(1);
+          transform: translateY(0);
+        }
+
+        img {
+          transform: rotateX(180deg);
+        }
+      }
+    }
+    &-sub {
+      position: absolute;
+      background: $black-cl;
+      width: 70px;
+      right: 0;
+      top: 100%;
+      @include visible(0);
+
+      transform: translateY(10px);
+      @include transition(all 0.2s ease-in-out);
+      &::before {
+        content: "";
+        position: absolute;
+        height: 20px;
+        background-color: transparent;
+        width: 100%;
+        left: 0;
+        bottom: 100%;
+      }
+    }
+
+    li {
+      @include transition(background 0.2s linear);
+      border: 1px solid $line-sub-lang;
+      border-color: $line-sub-lang transparent $line-sub-lang transparent;
+      &:hover {
+        background: $brown-light;
+      }
+
+      &:first-child,
+      &:last-child {
+        border-color: transparent;
+      }
+    }
+    a {
+      display: inline-block;
+      padding: 0 13px;
+      width: 100%;
+      text-align: right;
+      @include text(pr, 1.6rem, 3rem, auto, $white-cl, uppercase);
+    }
+  }
+
+  @include sm {
+    background-color: $black-head-foot;
+  }
+}
