@@ -304,12 +304,12 @@ window.addEventListener("load", function () {
     key_2: "cnOIfm7imwQ",
     key_3: "8_d2f_LLjPo",
   };
-  const endPoint = "https://www.youtube.com/embed/";
+  const endPoint = "https://www.youtube.com/embed";
   const thumnails = $$(".quality .thumnail");
 
   thumnails.forEach((thumnail, id) => {
     thumnail.dataset.fancybox = "video-gallery";
-    thumnail.dataset.src = `${endPoint}${Object.values(keys)[id]}`;
+    thumnail.dataset.src = `${endPoint}/${Object.values(keys)[id]}`;
   });
   Fancybox.bind("[video-gallery]", {
     on: {
